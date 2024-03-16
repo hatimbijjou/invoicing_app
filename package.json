@@ -1,0 +1,23 @@
+{
+  "name": "invoicing_app",
+  "version": "1.0.0",
+  "description": "Desktop app for invoice creating",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hatimbijjou/invoicing_app.git"
+  },
+  "author": "Hatim Bijjou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hatimbijjou/invoicing_app/issues"
+  },
+  "homepage": "https://github.com/hatimbijjou/invoicing_app#readme",
+  "devDependencies": {
+    "electron": "^29.1.4"
+  }
+}
