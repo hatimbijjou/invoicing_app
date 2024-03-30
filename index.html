@@ -4,13 +4,20 @@
     <meta charset="UTF-8" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';"
+      content="
+        default-src 'self'; 
+        script-src 'self' 'unsafe-inline'; 
+        style-src 'self' 'unsafe-inline'; 
+        frame-src data: blob:; 
+        object-src data:; 
+        connect-src 'self' data:;
+      "
     />
-    <meta
+    <!-- <meta
       http-equiv="X-Content-Security-Policy"
       content="default-src 'self'; script-src 'self';"
-    />
-    <title>Hello World!</title>
+    /> -->
+    <title>Invoicer App</title>
 
   </head>
   <body>

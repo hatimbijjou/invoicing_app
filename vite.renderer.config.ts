@@ -17,7 +17,7 @@ export default defineConfig((env) => {
       loader: "tsx",
       include: [
         './src/renderer.tsx',
-        './frontend/*',
+        './frontend/**/*',
       ]
     },
     build: {

@@ -1,6 +1,7 @@
-import { App } from 'frontend';
+import { App } from 'frontend'
 import ReactDOM from 'react-dom/client'
 import './index.css'
+import { Theme } from '@radix-ui/themes';
 
 
 const root = ReactDOM.createRoot(
@@ -8,4 +9,4 @@ const root = ReactDOM.createRoot(
 );
 
 
-root.render(<App/>)
+root.render(<Theme><App/></Theme>)
