@@ -1,0 +1,29 @@
+{
+  "name": "invoicer_backend",
+  "version": "1.0.0",
+  "description": "backbone of invoicer app",
+  "main": "index.js",
+  "type": "module",
+  "target": "esnext",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "migration:generate": "drizzle-kit generate:pg --schema=./db/schema.js",
+    "migration:push": "node -r esbuild-register ./db/migrate.js",
+    "migrate": "drizzle-kit generate:pg --schema=./db/schema.js && node -r esbuild-register ./db/migrate.js"
+  },
+  "author": "Hatim Bijjou",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.30.6",
+    "express": "^4.19.2",
+    "pg": "^8.11.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/pg": "^8.11.4",
+    "drizzle-kit": "^0.20.14"
+  }
+}
