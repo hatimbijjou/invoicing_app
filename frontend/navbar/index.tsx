@@ -5,6 +5,11 @@ import { useNavigate } from "react-router-dom";
 function Navbar() {
   const navigate = useNavigate()
 
+  const logout = () => {
+    localStorage.clear()
+    navigate('/account-login')
+  }
+
   return (
     <div className="w-fit p-4 bg-zinc-700 text-white">
       <div className="flex flex-col h-full items-center justify-between">
@@ -24,7 +29,7 @@ function Navbar() {
             <div className="text-xs uppercase">my clients</div>
           </div>
         </div>
-        <div className="flex flex-col w-full p-4 rounded items-center cursor-pointer hover:bg-white/10 select-none">
+        <div onClick={logout} className="flex flex-col w-full p-4 rounded items-center cursor-pointer hover:bg-white/10 select-none">
           <Power size={32}/>
           <div className="text-xs uppercase">log out</div>
         </div>

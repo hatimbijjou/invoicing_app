@@ -3,32 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { FormInvoiceCreate } from "./invoice-forms"
 import InvoicePreviewer from "./invoice-previewer"
 import { useState } from "react"
-
-export interface IInvoiceTemplate {
-    title?: string
-    from?: {
-        firstName?: string
-        lastName?: string
-        address?: string
-        email?: string
-        contact?: string
-        taxRegistrationNumber?: string
-        invoiceDate?: string
-    }
-    to?: {
-        businessName?: string
-        address?: string
-        email?: string
-        website?: string
-        invoiceDue?: string
-    }
-    bankDetails?: {
-        accountHolder?: string
-        iban?: string
-        bank?: string
-        email?: string
-    }
-}
+import { IInvoiceTemplate } from "frontend/interfaces"
 
 const InvoiceCreator = () => {
     const navigate = useNavigate()

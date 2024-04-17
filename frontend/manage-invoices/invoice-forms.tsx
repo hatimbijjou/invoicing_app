@@ -2,7 +2,7 @@ import { jsPDF } from "jspdf"
 import { Button } from 'frontend/components/button'
 import { useForm, SubmitHandler, Controller } from 'react-hook-form'
 import { SetStateAction, useEffect } from "react"
-import { IInvoiceTemplate } from "./invoice-creator"
+import { IInvoiceTemplate } from "../interfaces"
 import * as Tabs from '@radix-ui/react-tabs'
 
 type FormSchema = IInvoiceTemplate

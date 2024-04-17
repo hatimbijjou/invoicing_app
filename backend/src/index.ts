@@ -4,12 +4,14 @@ import usersRouter from './router/users'
 import clientsRouter from './router/clients'
 import invoicesRouter from './router/invoices'
 import authRouter from './router/authenticate'
+import cors from 'cors'
 
 
 dotenv.config()
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cors())
 
 const port = process.env.PORT
 

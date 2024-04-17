@@ -6,8 +6,8 @@ import { users } from '../db/schema'
 import { or, eq } from 'drizzle-orm'
 import jwt from 'jsonwebtoken'
 
-function generateAccessToken(username: {username: string}) {
-    return jwt.sign(username, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
+function generateAccessToken(user: any) {
+    return jwt.sign(user, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
 }
 
 authRouter.post('/login', async (req, res) => {
@@ -15,7 +15,7 @@ authRouter.post('/login', async (req, res) => {
         const credentials = req.body
         
         if (!credentials.emailOrUsername || !credentials.password) {
-            return res.status(400).json({ error: 'Both email/username and password are required.' })
+            return res.status(400).json({ detail: 'Both email/username and password are required.' })
         }
 
         let user = await db.query.users.findFirst({
@@ -23,16 +23,16 @@ authRouter.post('/login', async (req, res) => {
         })
 
         if (!user) {
-            return res.status(404).json({ error: 'User not found.' })
+            return res.status(404).json({ detail: 'username or password are incorrect.' })
         }
 
         const passwordMatch = await bcrypt.compare(credentials.password, user.password)
 
         if (!passwordMatch) {
-            return res.status(401).json({ error: 'Invalid password.' })
+            return res.status(401).json({ detail: 'username or password are incorrect.' })
         }
 
-        const token = generateAccessToken({ username: user.username })
+        const token = generateAccessToken({user: user})
 
         return res.status(200).json({
             message: "You are logged in successfully.",
