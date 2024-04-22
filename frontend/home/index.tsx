@@ -9,7 +9,7 @@ const Home = () => {
         <div>
             <span className="capitalize text-lg font-bold">recent invoices</span>
             <div className="p-2">
-                <Invoice.container onClick={() => navigate('/create-invoice')}>
+                <Invoice.container onClick={() => navigate('/manage-invoices/create')}>
                     <Invoice.body/>
                     <Invoice.name className="text-right text-gray-600">hatim bijjou</Invoice.name>
                 </Invoice.container>

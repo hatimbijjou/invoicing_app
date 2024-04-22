@@ -57,12 +57,18 @@ usersRouter.post('/', async (req, res) => {
 
 usersRouter.put('/:uuid', async (req, res) => {
     try {
-        const user = req.body
+        const salt = await bcrypt.genSalt(10)
+        const hashedPassword = await bcrypt.hash(req.body.password, salt)
+        
+        const user = {
+            ...req.body,
+            username: req.body.first_name + "." + req.body.last_name,
+            password: hashedPassword
+        }
         if (user) {
             await db.update(users).set(user).where(eq(users.uuid, req.params.uuid))
             return res.send({
-                message: "user updated successfully",
-                data: user
+                message: "user updated successfully"
             })
         }
     } catch (err) {

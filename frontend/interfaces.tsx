@@ -3,7 +3,29 @@ export interface IElectronAPI {
 }
 
 export interface IUser {
-    username: string
+    uuid?: string
+    username?: string
+    firstName?: string
+    lastName?: string
+    email?: string
+}
+
+export interface IClient {
+    id?: string
+    name?: string
+    address?: string
+    email?: string
+    website?: string
+    userUUID?: string
+}
+
+export interface IInvoice {
+    id: string
+    invoiceNo: string
+    invoiceDate: string
+    invoiceDue: string
+    userUUID: string
+    clientID: string
 }
 
 export interface IInvoiceTemplate {

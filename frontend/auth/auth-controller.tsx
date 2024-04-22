@@ -1,18 +1,29 @@
 import { IUser } from "frontend/interfaces"
-import { ReactNode, useEffect } from "react"
+import { Context, ReactNode, createContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { jwtDecode } from "jwt-decode";
 
+
+declare module "jwt-decode" {
+    export interface JwtPayload {
+        user: IUser
+    }
+}
+
+interface IAuthContext {
+    userInfo?: IUser
+}
+
+export const AuthContext: Context<IAuthContext> = createContext({})
+
 export const useAuth = () => {
     const token: string = localStorage.getItem("token")
-    const userInfo: IUser = {
-        username: ""
-    }
+    const [userInfo, setUserInfo] = useState<IUser>({})
 
     useEffect(() => {
         if (token) {
             const decodedJWT = jwtDecode(token)
-            console.log(decodedJWT)
+            if (decodedJWT) setUserInfo(decodedJWT.user)
         }
     }, [])
 
@@ -20,7 +31,7 @@ export const useAuth = () => {
 }
 
 export const AuthMiddelware: React.FC<{children: ReactNode}> = ({children}) => {
-    const {token} = useAuth()
+    const {token, userInfo} = useAuth()
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -31,7 +42,7 @@ export const AuthMiddelware: React.FC<{children: ReactNode}> = ({children}) => {
     }, [token, navigate]);
 
     if (token) {
-        return <>{children}</>
+        return <AuthContext.Provider value={{userInfo}}>{children}</AuthContext.Provider>
     }
     return
 }

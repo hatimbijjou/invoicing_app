@@ -18,7 +18,7 @@ clientsRouter.get('/', async (req, res) => {
 clientsRouter.get('/:id', async (req, res) => {
     try {
         const client = await db.query.clients.findFirst({
-            // where: eq(clients.id, req.params.id)
+            where: eq(clients.id, Number(req.params.id))
         })
         res.send(client)
     } catch (err) {
@@ -54,7 +54,7 @@ clientsRouter.put('/:id', async (req, res) => {
         const client = req.body
         if (client) {
             await db.update(clients).set(client)
-            //.where(eq(clients.id, req.params.id))
+            .where(eq(clients.id, Number(req.params.id)))
             return res.send({
                 message: "client updated successfully",
                 data: client
@@ -70,7 +70,7 @@ clientsRouter.put('/:id', async (req, res) => {
 clientsRouter.delete('/:id', async (req, res) => {
     try {
         await db.delete(clients)
-        //.where(eq(clients.id, req.params.id))
+        .where(eq(clients.id, Number(req.params.id)))
         return res.send({
             message: "client deleted successfully"
         })

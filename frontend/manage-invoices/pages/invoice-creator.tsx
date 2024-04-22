@@ -1,7 +1,7 @@
 import { ArrowLeft } from "@phosphor-icons/react/dist/ssr"
 import { useNavigate } from "react-router-dom"
-import { FormInvoiceCreate } from "./invoice-forms"
-import InvoicePreviewer from "./invoice-previewer"
+import { FormInvoiceCreate } from "../invoice-forms"
+import InvoicePreviewer from "../components/invoice-previewer"
 import { useState } from "react"
 import { IInvoiceTemplate } from "frontend/interfaces"
 

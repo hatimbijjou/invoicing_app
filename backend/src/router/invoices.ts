@@ -18,7 +18,7 @@ invoicesRouter.get('/', async (req, res) => {
 invoicesRouter.get('/:id', async (req, res) => {
     try {
         const invoice = await db.query.invoices.findFirst({
-            // where: eq(invoices.id, req.params.id)
+            where: eq(invoices.id, Number(req.params.id))
         })
         res.send(invoice)
     } catch (err) {
@@ -53,7 +53,7 @@ invoicesRouter.put('/:id', async (req, res) => {
         const invoice = req.body
         if (invoice) {
             await db.update(invoices).set(invoice)
-            //.where(eq(invoices.id, req.params.id))
+                .where(eq(invoices.id, Number(req.params.id)))
             return res.send({
                 message: "invoice updated successfully",
                 data: invoice
@@ -69,7 +69,7 @@ invoicesRouter.put('/:id', async (req, res) => {
 invoicesRouter.delete('/:id', async (req, res) => {
     try {
         await db.delete(invoices)
-        //.where(eq(invoices.id, req.params.id))
+            .where(eq(invoices.id, Number(req.params.id)))
         return res.send({
             message: "invoice deleted successfully"
         })

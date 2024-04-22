@@ -49,7 +49,7 @@ export const FormInvoiceCreate: React.FC<FormInvoiceCreateProps> = ({content, se
             ...prevState,
             ...form.getValues()
         }))
-    }, [form.watch()])
+    }, [form.watch])
     
 
     

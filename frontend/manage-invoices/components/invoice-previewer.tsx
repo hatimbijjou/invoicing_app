@@ -1,4 +1,4 @@
-import { IInvoiceTemplate } from "./invoice-creator"
+import { IInvoiceTemplate } from "frontend/interfaces"
 
 type InvoicePreviewerProps = {
     content?: IInvoiceTemplate
